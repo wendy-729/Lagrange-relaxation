@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe3722a9-2abd-43ce-9ad5-9e292955e9c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/拉格朗日松弛code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dual_Problem.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Subproblem.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backward.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backwardPass.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calculateES_LS.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forward.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forwardPass.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/initChoice.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/initCost.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/initData.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/initfile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local_search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objValue.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/read_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/updateRelation.py" afterDir="false" />
+    <list default="true" id="fe3722a9-2abd-43ce-9ad5-9e292955e9c0" name="Default Changelist" comment="feat:">
+      <change afterPath="$PROJECT_DIR$/ideal_lower_bound.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dual_Problem.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dual_Problem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Subproblem.py" beforeDir="false" afterPath="$PROJECT_DIR$/Subproblem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/local_search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,13 +15,25 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="22kn9R16unBi3icRIyr2TH3HSYL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RLP-PS-MIP-final" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -124,7 +121,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

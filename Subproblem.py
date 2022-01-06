@@ -3,6 +3,7 @@ import numpy as np
 
 
 def consturct_lagrangian_relaxation(mu_kt,res,max_H,lftn,activities,cost,req,est_s,lst_s,duration,mandatory,ae,we,be,b,projPred,u_kt):
+
     M = lftn
     # 创建模型
     md1 = Model()
@@ -13,23 +14,26 @@ def consturct_lagrangian_relaxation(mu_kt,res,max_H,lftn,activities,cost,req,est
 
     act = [i for i in range(0, activities)]
     it = [(i, j) for i in act for j in d]
+    # 松弛为连续求不出解
     # x_it = md1.continuous_var_dict(it, name='x')
     # y_kth = md1.continuous_var_cube(k, d, h, name='y')
     x_it = md1.binary_var_dict(it, name='x')
     y_kth = md1.binary_var_cube(k, d, h, name='y')
 
     # 目标函数
-    # u_kt
+    # u_kt，本来的资源占用量，而不是max_H
     # md1.minimize(md1.sum(
     #     (cost[kk] * (2 * hh - 1)-mu_kt[kk, t]) * y_kth[kk, t, hh] for t in d for kk in list(range(0, res)) for hh in list(range(1, u_kt[kk,t] + 1))
     #     ) + md1.sum(req[i][kk] * x_it[i, tt]*mu_kt[kk, t] for kk in k for t in d for i in list(range(1, activities)) for tt
     #                                in list(range(max(est_s[i], t - duration[i] + 1), min(t, lst_s[i])+1))))
+
     md1.minimize(md1.sum(
         cost[kk] * (2 * hh - 1) * y_kth[kk, t, hh] for t in d for kk in list(range(0, res)) for hh in
         list(range(1, u_kt[kk, t] + 1))
     ) + md1.sum(
         mu_kt[kk, t]*(md1.sum(req[i][kk] * x_it[i, tt] for i in list(range(1, activities)) for tt
         in list(range(max(est_s[i], t - duration[i] + 1), min(t, lst_s[i]) + 1)))- md1.sum(y_kth[kk,t,hh] for hh in list(range(1,u_kt[kk,t]+1))))for kk in k for t in d ))
+
     # max_H
     # md1.minimize(md1.sum(
     #     (cost[kk] * (2 * hh - 1) - mu_kt[kk, t]) * y_kth[kk, t, hh] for t in d for kk in list(range(0, res)) for hh in
@@ -90,7 +94,7 @@ def consturct_lagrangian_relaxation(mu_kt,res,max_H,lftn,activities,cost,req,est
     # 解的状态
     a = solution.solve_status
     # 计算时间
-    cputime = solution.solve_details.time
+    # cputime = solution.solve_details.time
 
 
     # x_it 的取值

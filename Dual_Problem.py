@@ -4,8 +4,11 @@ import numpy as np
 from Subproblem import consturct_lagrangian_relaxation
 # from Subproblem_pr import consturct_lagrangian_relaxation_Pr
 # from change_implement import change_implement
-from local_search import local_search
+from ideal_lower_bound import lower_bound
+from local_search import local_search, local_search1
+from objValue import objValue
 from updateRelation import update_Relation
+import math
 
 
 class Main():
@@ -16,6 +19,7 @@ class Main():
         # 初始步长
         self.step_size = 2
         self.beta = 2
+        # 没有改进的最大迭代次数
         self.max_non_improv = 5
         self.non_improv = 0
         # 梯度
@@ -43,6 +47,9 @@ class Main():
                                                                             req, est_s, lst_s,
                                                                             duration, mandatory, ae, we, be, b,
                                                                     pred,u_kt)
+            # improve_objective = lower_bound(opt_vl, req, lftn, resNo, duration, cost)
+            # if improve_objective>opt_objvalue:
+            #     opt_objvalue = math.floor(improve_objective)
 
             # 更新下界
             if opt_objvalue > self.best_lb:
@@ -75,6 +82,13 @@ class Main():
                         sum_y_kth += opt_y_kth[kk, tt, h]
                     self.subgradient_kt[kk,tt] = sum_u_kt-sum_y_kth
 
+            # 更新步长
+            dist = 0
+            for kk in range(res):
+                for tt in range(lftn + 1):
+                    dist += pow(self.subgradient_kt[kk, tt], 2)
+            # self.step_size = self.beta*(opt_objvalue-self.best_lb)/dist
+            self.step_size = self.beta * (self.best_ub - self.best_lb) / dist
 
             # 更新拉格朗日乘子
             # if flag ==1:
@@ -92,21 +106,25 @@ class Main():
             # 改变执行列表
             # opt_implement = change_implement(ae, we, be, b, opt_implement)
             # 更新项目结构
-            new_nrpr, new_nrsu, new_pred, new_su = update_Relation(nrpr, nrsu, su, pred, choiceList, opt_implement, activities)
+            # new_nrpr, new_nrsu, new_pred, new_su = update_Relation(nrpr, nrsu, su, pred, choiceList, opt_implement, activities)
+
             # 满足原问题约束的可行解作为原问题的上界【根据执行的活动，进行局部改进，调整】
-            best_schedule, current_ub = local_search(opt_schedule, new_nrsu, new_su, new_nrpr, new_pred, activities, opt_implement, duration, lftn, cost, resNo,req,ae, we, be, b)
+            # best_schedule, current_ub = local_search1(opt_schedule, new_nrsu, new_su, new_nrpr, new_pred, activities, opt_implement, duration, lftn, cost, resNo,req,ae, we, be, b)
+            # 直接计算松弛问题得到的可行进度计划对应的目标函数值
+            # current_ub, res_u_kt = objValue(opt_implement, opt_schedule, activities, resNo, duration, req, lftn, cost)
+            # print(current_ub)
+            # print(self.best_ub)
+            # if current_ub < self.best_ub:
+            #     self.best_ub = current_ub
 
-            if current_ub < self.best_ub:
-                self.best_ub = current_ub
 
-
-            # 更新步长
-            dist = 0
-            for kk in range(res):
-                for tt in range(lftn+1):
-                    dist += pow(self.subgradient_kt[kk, tt], 2)
-            # self.step_size = self.beta*(opt_objvalue-self.best_lb)/dist
-            self.step_size = self.beta * (self.best_ub - self.best_lb) / dist
+            # # 更新步长
+            # dist = 0
+            # for kk in range(res):
+            #     for tt in range(lftn+1):
+            #         dist += pow(self.subgradient_kt[kk, tt], 2)
+            # # self.step_size = self.beta*(opt_objvalue-self.best_lb)/dist
+            # self.step_size = self.beta * (self.best_ub - self.best_lb) / dist
 
             self.iter_time += 1
             # print('best_lb', self.best_lb)

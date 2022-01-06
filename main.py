@@ -26,7 +26,7 @@ from initfile import initfile
 # from newProjectData1 import newProjectData1
 from read_data import read_data, read_data_ga
 
-dtimes = [1]
+dtimes = [1.2]
 noact = [38, 45, 51, 61, 93, 104, 112, 132, 157]
 # 活动数量
 act = [30]
@@ -37,13 +37,11 @@ for dtime in dtimes:
         filename_opt = r'D:\研究生资料\RLP-PS汇总\实验结果\CPLEX\J' + str(actNumber) + '\\' + 'sch_rlp_' + str(
             actNumber + 2) + '_dtime_' + str(dtime) + '.txt'
         actSet = read_data(filename_opt)
-        # actSet = actSet[28:]
-        # print(actSet)
         # 第几组数据
         for group in range(1, 2):
             # 第几个实例
             for project in actSet:
-            # for project in range(48, 49):
+            # for project in range(1, 50):
                 print('instance', project)
             # for project in range(1, 2):
             # 读取GA获得的目标函数值
@@ -51,12 +49,12 @@ for dtime in dtimes:
                     group) + '\\' + '5000sch_rlp_' + str(actNumber+2)+ '_dtime_' + str(dtime) + '.txt'
                 upper_bound_data = read_data_ga(file_ga)
                 upper_bound = upper_bound_data[project-1]
-                upper_bound = 1e10
+                # upper_bound = 1e10
                 # print(upper_bound)
 
                 begin_time = time()
 
-                filename = r'C:\Users\ASUS\Desktop\拉格朗日松弛模型\J'+ str(actNumber)+'\\'+'lagranger_lower_ga_1_'+str(dtime)+'_'+'.txt'
+                filename = r'C:\Users\ASUS\Desktop\拉格朗日松弛模型\J'+ str(actNumber)+'\\'+'lagranger_lower_ga_'+str(dtime)+'_'+'.txt'
                 # 大修路径
                 # filename = r'D:\研究生资料\RLP-PS汇总\第五次投稿-Annals of Operations Research\ANOR大修\CPLEX\J'+ str(actNumber) +'\\' + 'sch_rlp_vl_' + str(actNumber + 2) + '_dtime_' + str(dtime) + '.txt'
 
@@ -73,7 +71,6 @@ for dtime in dtimes:
                         temp = [i - 1 for i in temp]
                         projPred.append(temp)
                     projPred.insert(0, [])
-                    # print(projPred[2][0])
 
                     # 紧后活动从0开始编号
                     proSu = []
@@ -81,9 +78,8 @@ for dtime in dtimes:
                         temp = su[i]
                         temp1 = [j - 1 for j in temp]
                         proSu.append(temp1)
-                    # print('紧后活动集合', proSu)
+                    # 柔性结构数据
                     datafile = r'D:\研究生资料\RLP-PS汇总\实验数据集\J'
-                    # datafile = r'D:\研究生资料\SRLP-PS汇总\数据和代码_final\SRLP-PS实验数据\J'
                     # 必须执行的活动
                     fp_mandatory = datafile + str(actNumber) + '\\' + str(
                         group) + '\\mandatory\\J' + str(actNumber) + '_' + str(project) + '.txt'
@@ -163,9 +159,9 @@ for dtime in dtimes:
 
                     # 最大资源占用量
                     max_H = max(max_h)
+                    # 最大的迭代次数
                     max_iter = 300
 
-                    #
                     # # 松弛优先关系约束
                     # mf = Main_Pr(res, lftn + 1, activities, max_H)
                     # best_lb, best_ub, gap = mf.solve_subgradient(max_iter, res, max_H, lftn, activities, cost, req,
