@@ -26,22 +26,22 @@ from initfile import initfile
 # from newProjectData1 import newProjectData1
 from read_data import read_data, read_data_ga
 
-dtimes = [1.2]
+dtimes = [1]
 noact = [38, 45, 51, 61, 93, 104, 112, 132, 157]
 # 活动数量
-act = [30]
+act = [120]
 M = 1e10
 for dtime in dtimes:
     for actNumber in act:
         # 读取最优实例
-        filename_opt = r'D:\研究生资料\RLP-PS汇总\实验结果\CPLEX\J' + str(actNumber) + '\\' + 'sch_rlp_' + str(
-            actNumber + 2) + '_dtime_' + str(dtime) + '.txt'
-        actSet = read_data(filename_opt)
+        # filename_opt = r'D:\研究生资料\RLP-PS汇总\实验结果\CPLEX\J' + str(actNumber) + '\\' + 'sch_rlp_' + str(
+        #     actNumber + 2) + '_dtime_' + str(dtime) + '.txt'
+        # actSet = read_data(filename_opt)
         # 第几组数据
-        for group in range(1, 2):
+        for group in range(4, 5):
             # 第几个实例
-            for project in actSet:
-            # for project in range(1, 50):
+            # for project in actSet:
+            for project in range(25, 100):
                 print('instance', project)
             # for project in range(1, 2):
             # 读取GA获得的目标函数值

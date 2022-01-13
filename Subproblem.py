@@ -97,10 +97,10 @@ def consturct_lagrangian_relaxation(mu_kt,res,max_H,lftn,activities,cost,req,est
     # cputime = solution.solve_details.time
 
 
-    # x_it 的取值
+    # # x_it 的取值
     opt_x_it = np.zeros((activities, lftn+1))
     opt_y_kth = np.zeros((res, lftn+1, max_H+1))
-
+    #
     # print(x_it)
     # 获取执行活动以及对应的开始时间
     x_it_value = solution.get_value_dict(x_it)
@@ -115,22 +115,22 @@ def consturct_lagrangian_relaxation(mu_kt,res,max_H,lftn,activities,cost,req,est
         if value == 1:
             opt_y_kth[key[0],key[1],key[2]]=1
             # print(key)
-
-    act_time = []
-    for key, value in x_it_value.items():
-        if value == 1:
-            act_time.append(key)
+    #
+    # act_time = []
+    # for key, value in x_it_value.items():
+    #     if value == 1:
+    #         act_time.append(key)
     # 进度计划
     schedule = [0 for x in range(0, activities)]
     # 执行活动
     vl = []
-    for i in range(len(act_time)):
-        vl.append(act_time[i][0])
-        schedule[act_time[i][0]] = act_time[i][1]
+    # for i in range(len(act_time)):
+    #     vl.append(act_time[i][0])
+    #     schedule[act_time[i][0]] = act_time[i][1]
     # 执行列表
     implement = [0]*activities
-    for i in vl:
-        implement[i] = 1
+    # for i in vl:
+    #     implement[i] = 1
 
 
 

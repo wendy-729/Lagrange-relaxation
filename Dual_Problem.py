@@ -82,13 +82,6 @@ class Main():
                         sum_y_kth += opt_y_kth[kk, tt, h]
                     self.subgradient_kt[kk,tt] = sum_u_kt-sum_y_kth
 
-            # 更新步长
-            dist = 0
-            for kk in range(res):
-                for tt in range(lftn + 1):
-                    dist += pow(self.subgradient_kt[kk, tt], 2)
-            # self.step_size = self.beta*(opt_objvalue-self.best_lb)/dist
-            self.step_size = self.beta * (self.best_ub - self.best_lb) / dist
 
             # 更新拉格朗日乘子
             # if flag ==1:
@@ -118,13 +111,13 @@ class Main():
             #     self.best_ub = current_ub
 
 
-            # # 更新步长
-            # dist = 0
-            # for kk in range(res):
-            #     for tt in range(lftn+1):
-            #         dist += pow(self.subgradient_kt[kk, tt], 2)
-            # # self.step_size = self.beta*(opt_objvalue-self.best_lb)/dist
-            # self.step_size = self.beta * (self.best_ub - self.best_lb) / dist
+            # 更新步长
+            dist = 0
+            for kk in range(res):
+                for tt in range(lftn+1):
+                    dist += pow(self.subgradient_kt[kk, tt], 2)
+            # self.step_size = self.beta*(opt_objvalue-self.best_lb)/dist
+            self.step_size = self.beta * (self.best_ub - self.best_lb) / dist
 
             self.iter_time += 1
             # print('best_lb', self.best_lb)
