@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe3722a9-2abd-43ce-9ad5-9e292955e9c0" name="Default Changelist" comment="feat:">
-      <change afterPath="$PROJECT_DIR$/ideal_lower_bound.py" afterDir="false" />
+    <list default="true" id="fe3722a9-2abd-43ce-9ad5-9e292955e9c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dual_Problem.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dual_Problem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Subproblem.py" beforeDir="false" afterPath="$PROJECT_DIR$/Subproblem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/local_search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,7 +29,7 @@
   <component name="ProjectId" id="22kn9R16unBi3icRIyr2TH3HSYL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/PycharmProjects/RLP-PS-MIP-final" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -114,6 +110,14 @@
       <option name="presentableId" value="Default" />
       <updated>1640390300598</updated>
     </task>
+    <task id="LOCAL-00001" summary="feat:增加一个计算理想下界的函数（松弛模型得到的执行活动）&#10;fix:原问题的上界是GA获得的解，不是通过启发式获得">
+      <created>1641442689407</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641442689407</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,5 +132,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat:增加一个计算理想下界的函数（松弛模型得到的执行活动）&#10;fix:原问题的上界是GA获得的解，不是通过启发式获得" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat:增加一个计算理想下界的函数（松弛模型得到的执行活动）&#10;fix:原问题的上界是GA获得的解，不是通过启发式获得" />
   </component>
 </project>

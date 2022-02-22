@@ -41,7 +41,7 @@ for dtime in dtimes:
         for group in range(4, 5):
             # 第几个实例
             # for project in actSet:
-            for project in range(25, 100):
+            for project in range(1, 100):
                 print('instance', project)
             # for project in range(1, 2):
             # 读取GA获得的目标函数值
@@ -54,7 +54,7 @@ for dtime in dtimes:
 
                 begin_time = time()
 
-                filename = r'C:\Users\ASUS\Desktop\拉格朗日松弛模型\J'+ str(actNumber)+'\\'+'lagranger_lower_ga_'+str(dtime)+'_'+'.txt'
+                filename = r'C:\Users\ASUS\Desktop\新模型测试实验-srlp-ps'+'\\'+'lagranger_lower_ga_'+str(dtime)+'_'+'.txt'
                 # 大修路径
                 # filename = r'D:\研究生资料\RLP-PS汇总\第五次投稿-Annals of Operations Research\ANOR大修\CPLEX\J'+ str(actNumber) +'\\' + 'sch_rlp_vl_' + str(actNumber + 2) + '_dtime_' + str(dtime) + '.txt'
 
@@ -183,7 +183,7 @@ for dtime in dtimes:
                     run_time = end_time-begin_time
                     results = str(project) + '\t' + format(best_lb,'.2f') + '\t' + format(best_ub,'.2f') + '\t' + format(gap,'.2f')+ '\t'+format(run_time,'.2f')+'\n'
                     print(results)
-                    f.write(results)
+                    # f.write(results)
                     print(project, 'is solved')
                     # print(end_time-begin_time)
 
